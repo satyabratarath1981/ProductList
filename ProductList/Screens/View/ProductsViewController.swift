@@ -14,12 +14,16 @@ class ProductsViewController: UIViewController {
     @IBOutlet weak var productActivityIndicator: UIActivityIndicatorView!
     
     private var viewModel = ProductsViewModel()
-    var productTitle : String?
-    var productDescription : String?
-    var productDetailImage: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.isHidden = true
+            self.productActivityIndicator.isHidden = false
+            self.productActivityIndicator.startAnimating()
+        }
+        
         productTableView.register(UINib(nibName: Constants.ViewControllers.productTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.ViewControllers.productTableViewCell)
         configuration()
     }
@@ -28,12 +32,8 @@ class ProductsViewController: UIViewController {
 extension ProductsViewController {
     
     func configuration(){
-        initViewController()
-        observeEvent()
-    }
-    
-    func initViewController(){
         viewModel.fetchProducts()
+        observeEvent()
     }
     
     func observeEvent(){
@@ -43,10 +43,6 @@ extension ProductsViewController {
             switch event {
             case .loading:
                 print("start loading")
-                DispatchQueue.main.async {
-                    self?.productActivityIndicator.isHidden = false
-                    self?.productActivityIndicator.startAnimating()
-                }
                 break
             case .dataLoaded:
                 DispatchQueue.main.async {
@@ -58,6 +54,7 @@ extension ProductsViewController {
                 DispatchQueue.main.async {
                     self?.productActivityIndicator.stopAnimating()
                     self?.productActivityIndicator.isHidden = true
+                    self?.navigationController?.navigationBar.isHidden = false
                 }
                 break
             case .error(let error):
@@ -90,19 +87,17 @@ extension ProductsViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = viewModel.productList[indexPath.row]
-        productTitle = product.title
-        productDescription = product.description
-        productDetailImage = product.images.last
         self.performSegue(withIdentifier: Constants.ViewControllers.productSegueIdentifier, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.ViewControllers.productSegueIdentifier{
             if let productsDetailViewController = segue.destination as? ProductsDetailViewController {
-                productsDetailViewController.productDetailTitle = productTitle
-                productsDetailViewController.productDetailDescription = productDescription
-                productsDetailViewController.productDetailImage = productDetailImage
+                guard let indexPath = productTableView.indexPathForSelectedRow else { return }
+                let product = viewModel.productList[indexPath.row]
+                let productDetailsModel = ProductDetailsModel(title: product.title, description: product.description, image: product.images.first ?? "")
+                productsDetailViewController.productDetailsModel = productDetailsModel
+                
             }
         }
     }
@@ -115,14 +110,8 @@ extension ProductsViewController : UITableViewDelegate, UITableViewDataSource {
         let productprice = selectedCell.price
         let productstock = selectedCell.stock
         
-        let productCartDict = [
-            "productid"    : productid,
-            "producttitle"    : producttitle,
-            "productprice"   : productprice,
-            "productstock" : productstock
-        ] as [String : Any]
-        
-        DatabaseHelper.shareInstance.saveProductCartInfoData(productCartDict: productCartDict)
+        let addToCart = AddToCartModel(title: producttitle, id: productid, stock: productstock, price: productprice)
+        DatabaseHelper.shareInstance.saveProductCartInfoData(productCart: addToCart)
         let next = self.storyboard?.instantiateViewController(withIdentifier: Constants.ViewControllers.productCartViewController) as! ProductCartViewController
         self.present(next, animated: true, completion: nil)
     }

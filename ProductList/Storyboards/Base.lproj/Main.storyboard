@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pgE-a8-sYY">
-                                <rect key="frame" x="0.0" y="105" width="393" height="700"/>
+                                <rect key="frame" x="0.0" y="133" width="393" height="636"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="TY3-OB-KLZ"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="8j7-0i-8mZ"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bbz-LN-Gm8">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bbz-LN-Gm8">
                                 <rect key="frame" x="188" y="418" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -31,8 +31,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pgE-a8-sYY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="8Xu-ka-R89"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pgE-a8-sYY" secondAttribute="bottom" constant="-36" id="90t-bm-1dk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pgE-a8-sYY" secondAttribute="bottom" id="90t-bm-1dk"/>
+                            <constraint firstItem="pgE-a8-sYY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="QKZ-g3-idX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pgE-a8-sYY" secondAttribute="trailing" id="scu-JJ-ABR"/>
                             <constraint firstItem="pgE-a8-sYY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zMJ-Qn-NrL"/>
                         </constraints>

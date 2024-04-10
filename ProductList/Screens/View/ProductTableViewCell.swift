@@ -41,6 +41,6 @@ class ProductTableViewCell: UITableViewCell {
         priceLabel.text = "$\(products.price)"
         ratingLabel.text = "Rating"
         ratingButton.setTitle("\(products.rating)", for: .normal)
-        productimgageView?.getImageFromUrl(url: products.images.first ?? "")
+        productimgageView?.getImageFromUrl(from: products.images.first ?? "")
     }
 }

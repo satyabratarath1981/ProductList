@@ -27,7 +27,8 @@
 		7C372BFB2BBDD0D300A3EE0C /* ProductCart+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C372BF92BBDD0D300A3EE0C /* ProductCart+CoreDataProperties.swift */; };
 		7C5C602C2BB455E800C6EE6D /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C602B2BB455E800C6EE6D /* UIImageView + Extension.swift */; };
 		7C5C60302BB4A24800C6EE6D /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C602F2BB4A24800C6EE6D /* ProductDetailsViewController.swift */; };
-		7C5D736D2BBD146500F10753 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7C5D736C2BBD146500F10753 /* Kingfisher */; };
+		7C7514172BC6B96300DE57E3 /* AddToCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7514162BC6B96300DE57E3 /* AddToCartModel.swift */; };
+		7C7514192BC6CB9D00DE57E3 /* ProductDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7514182BC6CB9D00DE57E3 /* ProductDetailsModel.swift */; };
 		7CF82EC52BBD09710028FDEF /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF82EC42BBD09710028FDEF /* DatabaseHelper.swift */; };
 		7CFC2E132BBD5B1200D6748A /* ProductCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC2E122BBD5B1200D6748A /* ProductCartViewController.swift */; };
 		7CFC2E162BBD5E7100D6748A /* ProductCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC2E142BBD5E7100D6748A /* ProductCartTableViewCell.swift */; };
@@ -67,6 +68,8 @@
 		7C372BF92BBDD0D300A3EE0C /* ProductCart+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductCart+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7C5C602B2BB455E800C6EE6D /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		7C5C602F2BB4A24800C6EE6D /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		7C7514162BC6B96300DE57E3 /* AddToCartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartModel.swift; sourceTree = "<group>"; };
+		7C7514182BC6CB9D00DE57E3 /* ProductDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsModel.swift; sourceTree = "<group>"; };
 		7CF82EC42BBD09710028FDEF /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		7CFC2E122BBD5B1200D6748A /* ProductCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCartViewController.swift; sourceTree = "<group>"; };
 		7CFC2E142BBD5E7100D6748A /* ProductCartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCartTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C5D736D2BBD146500F10753 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				7C2A47B32BAE156B000DECCE /* ProductsModel.swift */,
+				7C7514162BC6B96300DE57E3 /* AddToCartModel.swift */,
+				7C7514182BC6CB9D00DE57E3 /* ProductDetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,7 +267,6 @@
 			);
 			name = ProductList;
 			packageProductDependencies = (
-				7C5D736C2BBD146500F10753 /* Kingfisher */,
 			);
 			productName = MobileProductList;
 			productReference = 7C2A47912BAE112E000DECCE /* ProductList.app */;
@@ -298,7 +301,6 @@
 			);
 			mainGroup = 7C2A47882BAE112E000DECCE;
 			packageReferences = (
-				7C5D736B2BBD146500F10753 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 7C2A47922BAE112E000DECCE /* Products */;
 			projectDirPath = "";
@@ -349,11 +351,13 @@
 			files = (
 				7C5C602C2BB455E800C6EE6D /* UIImageView + Extension.swift in Sources */,
 				7C372BFA2BBDD0D300A3EE0C /* ProductCart+CoreDataClass.swift in Sources */,
+				7C7514172BC6B96300DE57E3 /* AddToCartModel.swift in Sources */,
 				7C2A47B82BAE16C8000DECCE /* ApiHelper.swift in Sources */,
 				7CF82EC52BBD09710028FDEF /* DatabaseHelper.swift in Sources */,
 				7C2A47BD2BAE1895000DECCE /* ProductTableViewCell.swift in Sources */,
 				7C372BFB2BBDD0D300A3EE0C /* ProductCart+CoreDataProperties.swift in Sources */,
 				7C5C60302BB4A24800C6EE6D /* ProductDetailsViewController.swift in Sources */,
+				7C7514192BC6CB9D00DE57E3 /* ProductDetailsModel.swift in Sources */,
 				7C372BF72BBDD03D00A3EE0C /* ProductList.xcdatamodeld in Sources */,
 				7C2A47B62BAE166F000DECCE /* ProductsViewModel.swift in Sources */,
 				7CFC2E162BBD5E7100D6748A /* ProductCartTableViewCell.swift in Sources */,
@@ -559,7 +563,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProductList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -586,7 +590,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ProductList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -634,25 +638,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7C5D736B2BBD146500F10753 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7C5D736C2BBD146500F10753 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7C5D736B2BBD146500F10753 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7C372BF52BBDD03D00A3EE0C /* ProductList.xcdatamodeld */ = {
