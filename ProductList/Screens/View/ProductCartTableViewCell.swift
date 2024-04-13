@@ -7,13 +7,17 @@
 
 import UIKit
 
+// MARK: - Product Cart TableViewCell
 class ProductCartTableViewCell: UITableViewCell {
 
+    // MARK: - Product Cart TableViewCell @IBOutlet
     @IBOutlet weak var productBackgroundView: UIView!
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var stockLabel: UILabel!
     @IBOutlet weak var stockButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
+    
+    // MARK: - Product Cart Configure Cell Content
     
     var productCart : ProductCart? {
         didSet {
@@ -27,15 +31,13 @@ class ProductCartTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureCellContent(){
         guard let productCart else { return }
         productTitleLabel.text = productCart.productTitle
         priceLabel.text = "$\(String(describing: productCart.productPrice))"
-        stockLabel.text = "In Stock"
+        stockLabel.text = Constants.ViewControllers.InStock
         stockButton.setTitle("\(String(describing: productCart.productStock))", for: .normal)
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Product Details Struct
 struct ProductDetailsModel {
     let title, description: String
     let image: String

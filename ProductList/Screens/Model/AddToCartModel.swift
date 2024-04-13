@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - AddToCart Struct
 struct AddToCartModel {
     let title: String
     let id,stock,price : Int

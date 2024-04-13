@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: - Product Table TableViewCell
 class ProductTableViewCell: UITableViewCell {
 
+    // MARK: - Product List TableViewCell @IBOutlet
     @IBOutlet weak var productBackgroundView: UIView!
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productDescriptionLabel: UILabel!
@@ -18,6 +20,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var productimgageView: UIImageView!
     @IBOutlet weak var buyButton: UIButton!
     
+    // MARK: - Product List Configure Cell Content
     var products : ProductsDetails? {
         didSet {
             configureCellContent()
@@ -30,8 +33,6 @@ class ProductTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configureCellContent(){
@@ -39,7 +40,7 @@ class ProductTableViewCell: UITableViewCell {
         productTitleLabel.text = products.title
         productDescriptionLabel.text = products.description
         priceLabel.text = "$\(products.price)"
-        ratingLabel.text = "Rating"
+        ratingLabel.text = Constants.ViewControllers.Rating
         ratingButton.setTitle("\(products.rating)", for: .normal)
         productimgageView?.getImageFromUrl(from: products.images.first ?? "")
     }

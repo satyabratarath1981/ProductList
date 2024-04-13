@@ -7,14 +7,23 @@
 
 import Foundation
 
+// MARK: - Products View Model
 class ProductsViewModel {
-    
     var productList : [ProductsDetails] = []
     
-    var eventHandler : ((_ event: Event) -> Void)? //Data binding closure
+    // MARK: - Data binding closure
+    var eventHandler : ((_ event: Event) -> Void)?
     
+    // MARK: - Api Protocol
+    var apiProtocol: ApiProtocol
+    init(apiProtocol: ApiProtocol) {
+        self.apiProtocol = apiProtocol
+
+    }
+    
+    // MARK: - Fetch Products
     func fetchProducts(){
-        ApiHelper.shared.fetchList { response in
+        ApiHelper.shared.fetchProductList { response in
             self.eventHandler?(.loading)
             switch response {
             case .failure(let error):

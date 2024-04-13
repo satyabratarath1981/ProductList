@@ -7,11 +7,13 @@
 
 import Foundation
 
+// MARK: - Products Struct
 struct Products: Codable {
     let products: [ProductsDetails]
     let total, skip, limit: Int
 }
 
+// MARK: - ProductsDetails Struct
 struct ProductsDetails: Codable {
     let id: Int
     let title, description: String

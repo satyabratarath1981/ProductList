@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// MARK: - Extension for fetch image from API
 extension UIImageView {
     func getImageFromUrl(from url: String) {
         guard let url = URL(string: url) else { return }

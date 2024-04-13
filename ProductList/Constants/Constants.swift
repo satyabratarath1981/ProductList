@@ -12,10 +12,16 @@ class Constants {
         static let productURL = "https://dummyjson.com/products/"
     }
     
-    enum ViewControllers {
+    enum ViewControllers{
         static let productCartViewController = "ProductCartViewController"
         static let productTableViewCell = "ProductTableViewCell"
         static let productCartTableViewCell = "ProductCartTableViewCell"
         static let productSegueIdentifier = "showProductDetails"
+        static let Rating = "Rating"
+        static let InStock = "In Stock"
+    }
+    
+    enum CoreData {
+        static let EntityName = "ProductCart"
     }
 }
