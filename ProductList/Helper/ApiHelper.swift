@@ -7,13 +7,18 @@
 
 import Foundation
 
-typealias handler = (Result<Products, DataError>) -> Void
+// MARK: - API Protocol
+protocol ApiProtocol {
+     func fetchProductList( completionHandler : @escaping handler)
+}
 
-class ApiHelper {
+// MARK: - API Class
+typealias handler = (Result<Products, DataError>) -> Void
+class ApiHelper: ApiProtocol {
     static let shared = ApiHelper()
-    private init() {}
+    init() {}
     
-    func fetchList( completionHandler : @escaping handler){
+    func fetchProductList( completionHandler : @escaping handler){
         guard let url = URL(string: Constants.API.productURL) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in

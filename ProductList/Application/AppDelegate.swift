@@ -11,6 +11,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    // MARK: - Get CoreData Database Path for testing
     func getCoreDataDBPath() {
             let path = FileManager
                 .default
@@ -21,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .removingPercentEncoding
 
             print("Core Data DB Path :: \(path ?? "Not found")")
-        }
-
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //getCoreDataDBPath()

@@ -9,10 +9,8 @@ import Foundation
 import UIKit
 
 class ProductsDetailViewController: UIViewController {
-    
-    var productDetailTitle: String?
-    var productDetailDescription: String?
-    var productDetailImage: String?
+       
+    var productDetailsModel: ProductDetailsModel!
     
     @IBOutlet weak var productDetailTitleLbl: UILabel!
     @IBOutlet weak var productDetailDescriptionLbl: UILabel!
@@ -21,8 +19,8 @@ class ProductsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productDetailTitleLbl.text = productDetailTitle
-        productDetailDescriptionLbl.text = productDetailDescription
-        productDetailImageView?.getImageFromUrl(url: productDetailImage ?? "")
+        productDetailTitleLbl.text = productDetailsModel.title
+        productDetailDescriptionLbl.text = productDetailsModel.description
+        productDetailImageView?.getImageFromUrl(from: productDetailsModel.image)
     }
 }
