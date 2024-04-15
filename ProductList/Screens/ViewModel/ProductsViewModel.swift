@@ -23,8 +23,7 @@ class ProductsViewModel {
     
     // MARK: - Fetch Products
     func fetchProducts(){
-        ApiHelper.shared.fetchProductList { response in
-            self.eventHandler?(.loading)
+        self.apiProtocol.fetchProductList { response in
             switch response {
             case .failure(let error):
                 self.eventHandler?(.error(error))
@@ -33,7 +32,6 @@ class ProductsViewModel {
                 self.productList = productsList.products;
                 self.eventHandler?(.dataLoaded)
             }
-            self.eventHandler?(.stopLoading)
         }
     }
 }
@@ -41,8 +39,6 @@ class ProductsViewModel {
 extension ProductsViewModel {
     
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

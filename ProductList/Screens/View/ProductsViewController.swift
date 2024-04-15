@@ -22,18 +22,10 @@ class ProductsViewController: UIViewController {
         let  viewModel = ProductsViewModel(apiProtocol: self.apiService)
         return viewModel
     }()
-
+    
     // MARK: - Products ViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.main.async {
-            self.navigationController?.navigationBar.isHidden = true
-            self.productActivityIndicator.isHidden = false
-            self.productActivityIndicator.color = .brown
-            self.productActivityIndicator.startAnimating()
-        }
-        
         productTableView.register(UINib(nibName: Constants.ViewControllers.productTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.ViewControllers.productTableViewCell)
         configuration()
     }
@@ -43,8 +35,11 @@ class ProductsViewController: UIViewController {
 extension ProductsViewController {
     
     func configuration(){
-        viewModel.fetchProducts()
-        observeEvent()
+        DispatchQueue.main.async {
+            self.showActivityIndicator()
+        }
+        self.viewModel.fetchProducts()
+        self.observeEvent()
     }
     
     func observeEvent(){
@@ -52,25 +47,16 @@ extension ProductsViewController {
             guard self != nil else { return }
             
             switch event {
-            case .loading:
-                print("start loading")
-                break
             case .dataLoaded:
                 DispatchQueue.main.async {
                     self?.productTableView.reloadData()
-                }
-                break
-            case .stopLoading:
-                print("stop loading")
-                DispatchQueue.main.async {
-                    self?.productActivityIndicator.stopAnimating()
-                    self?.productActivityIndicator.isHidden = true
-                    self?.navigationController?.navigationBar.isHidden = false
-                }
-                break
+                    self?.hideActivityIndicator()
+            }
             case .error(let error):
+                DispatchQueue.main.async {
+                    self?.hideActivityIndicator()
+                }
                 print("error --> \(String(describing: error))")
-                break
             }
         }
     }
@@ -129,3 +115,17 @@ extension ProductsViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - Products ViewController Activity Indicator
+extension ProductsViewController {
+    func showActivityIndicator() {
+        self.productActivityIndicator.startAnimating()
+        self.productActivityIndicator.color = .brown
+        self.productActivityIndicator.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    func hideActivityIndicator() {
+        self.productActivityIndicator.stopAnimating()
+        self.productActivityIndicator.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
+    }
+}
