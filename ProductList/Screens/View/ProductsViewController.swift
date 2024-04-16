@@ -46,16 +46,16 @@ extension ProductsViewController {
         viewModel.eventHandler = { [weak self] event in
             guard self != nil else { return }
             
+            DispatchQueue.main.async {
+                self?.hideActivityIndicator()
+            }
+            
             switch event {
             case .dataLoaded:
                 DispatchQueue.main.async {
                     self?.productTableView.reloadData()
-                    self?.hideActivityIndicator()
             }
             case .error(let error):
-                DispatchQueue.main.async {
-                    self?.hideActivityIndicator()
-                }
                 print("error --> \(String(describing: error))")
             }
         }
